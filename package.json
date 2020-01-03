@@ -1,6 +1,6 @@
 {
   "name": "inject-typesafe-react",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Reactjs integration for inject-typesafe in the form of a Context, high-order component (HOC) and hook for resolving injected services.",
   "main": "dist/lib/commonjs/index.js",
   "module": "dist/lib/esm/index.js",
@@ -41,12 +41,12 @@
   },
   "dependencies": {
     "inject-typesafe": "^2.1.1",
-    "react": "^16.8.6",
+    "react": "^16.12.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "@types/react": "^16.8.16",
-    "typescript": "^3.4.5",
-    "rimraf": "^2.6.3"
+    "@types/react": "^16.9.17",
+    "rimraf": "^2.7.1",
+    "typescript": "^3.7.4"
   }
 }

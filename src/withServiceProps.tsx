@@ -1,23 +1,23 @@
 ﻿import * as React from 'react';
 import { IServiceProvider } from 'inject-typesafe';
-import { InjectContext } from "./InjectContext";
+import { ServiceProviderContext } from "./ServiceProviderContext";
 
 /**
- * Create a HOC that injects services into props via the mapToServices function from a scope under the InjectContext's provider.
+ * Create a HOC that injects services into props via the mapToServices function from a scope under the ServiceProviderContext's provider.
  * 
  * This has been designed to feel similar to Redux's connect() HOC.
  * @param Container
  * @param props
  */
-export function withInjectedProps<PropTypes = any, ServiceCollection = any>(mapToServices: (services: ServiceCollection) => Partial<PropTypes>): ((component: React.ComponentType<any>) => any) {
+export function withServiceProps<PropTypes = any, ServiceCollection = any>(mapToServices: (services: ServiceCollection) => Partial<PropTypes>): ((component: React.ComponentType<any>) => any) {
     var wrapper = (Component: React.ComponentType<any>) => {
-        class WithInjectedProps extends React.Component<Partial<PropTypes>> {
-            static displayName = `withInjectedProps(${getDisplayName(Component)})`;
+        class WithServiceProps extends React.Component<Partial<PropTypes>> {
+            static displayName = `withServiceProps(${getDisplayName(Component)})`;
 
             render() {
                 let serviceProvider = this.context as IServiceProvider;
                 if (!serviceProvider) {
-                    throw 'You must include a parent <InjectContext.Provider> in your component tree to use the withInjectedProps HOC or useInjected() hook.'
+                    throw 'You must include a parent <ServiceProviderContext.Provider> in your component tree to use the withServiceProps HOC or useServices() hook.'
                 }
 
                 // Each injection takes place as a seperate scope.
@@ -32,9 +32,9 @@ export function withInjectedProps<PropTypes = any, ServiceCollection = any>(mapT
             }
         };
 
-        WithInjectedProps.contextType = InjectContext;
+        WithServiceProps.contextType = ServiceProviderContext;
 
-        return WithInjectedProps;
+        return WithServiceProps;
     };
 
     return wrapper;

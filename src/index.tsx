@@ -1,3 +1,3 @@
-﻿export * from "./InjectContext";
-export * from "./useInjected";
-export * from "./withInjectedProps";
+﻿export * from "./ServiceProviderContext";
+export * from "./useServices";
+export * from "./withServiceProps";
